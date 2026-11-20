@@ -11,13 +11,14 @@ npm run dev
 
 Then open http://localhost:5173 in your browser.
 
-## What's in step 1
+## What's built so far
 
 - Home page with a points bank in the header (starts at 0)
-- Lesson cards for Addition and Subtraction (Subtraction is coming soon)
-- Addition lesson: worked examples, one-at-a-time practice with instant
+- Lesson cards for Addition and Subtraction, both playable
+- Each lesson: worked examples, one-at-a-time practice with instant
   feedback, and a 10-question quiz that scores you and adds points
   (10 points per correct answer) to the bank
+- Subtraction teaching includes a step-by-step borrowing example (32 − 15)
 
 ## Other commands
 

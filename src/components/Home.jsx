@@ -7,6 +7,7 @@ const lessons = [
     example: '3 + 2 = 5',
     colors: 'bg-orange-400 shadow-[0_6px_0_#c2410c]',
     badge: 'bg-orange-100 text-orange-800',
+    button: 'bg-orange-500 shadow-[0_6px_0_#9a3412] hover:bg-orange-400 focus-visible:ring-orange-300',
     available: true,
   },
   {
@@ -17,11 +18,12 @@ const lessons = [
     example: '5 − 2 = 3',
     colors: 'bg-teal-400 shadow-[0_6px_0_#0f766e]',
     badge: 'bg-teal-100 text-teal-800',
-    available: false,
+    button: 'bg-teal-500 shadow-[0_6px_0_#0f766e] hover:bg-teal-400 focus-visible:ring-teal-300',
+    available: true,
   },
 ]
 
-export default function Home({ onStartAddition }) {
+export default function Home({ onStartAddition, onStartSubtraction }) {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
       <section className="pt-10 pb-8 text-center sm:pt-14">
@@ -51,8 +53,8 @@ export default function Home({ onStartAddition }) {
             {lesson.available ? (
               <button
                 type="button"
-                onClick={onStartAddition}
-                className="mt-6 min-h-16 w-full rounded-full bg-orange-500 font-display text-2xl font-extrabold text-white shadow-[0_6px_0_#9a3412] transition hover:bg-orange-400 active:translate-y-1 active:shadow-none focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-300"
+                onClick={lesson.id === 'addition' ? onStartAddition : onStartSubtraction}
+                className={`mt-6 min-h-16 w-full rounded-full font-display text-2xl font-extrabold text-white transition active:translate-y-1 active:shadow-none focus:outline-none focus-visible:ring-4 ${lesson.button}`}
               >
                 Start learning →
               </button>
@@ -61,7 +63,6 @@ export default function Home({ onStartAddition }) {
                 type="button"
                 disabled
                 className="mt-6 min-h-16 w-full cursor-not-allowed rounded-full bg-slate-200 font-display text-2xl font-extrabold text-slate-500"
-                aria-label="Subtraction — coming soon"
               >
                 Coming soon 🔒
               </button>
