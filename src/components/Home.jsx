@@ -32,6 +32,17 @@ const lessons = [
     button: 'bg-rose-500 shadow-[0_6px_0_#be123c] hover:bg-rose-400 focus-visible:ring-rose-300',
     available: true,
   },
+  {
+    id: 'division',
+    symbol: '÷',
+    title: 'Division',
+    tagline: 'Share equally and make fair groups!',
+    example: '12 ÷ 3 = 4',
+    colors: 'bg-sky-400 shadow-[0_6px_0_#0369a1]',
+    badge: 'bg-sky-100 text-sky-800',
+    button: 'bg-sky-500 shadow-[0_6px_0_#0369a1] hover:bg-sky-400 focus-visible:ring-sky-300',
+    available: true,
+  },
 ]
 
 export default function Home({ onStartLesson }) {

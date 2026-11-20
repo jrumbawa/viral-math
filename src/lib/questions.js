@@ -30,6 +30,24 @@ export function makeMultiplicationQuestions(count, { maxFactor = 9, twoDigit = 0
   return questions
 }
 
+/** Generate `count` division questions with no remainders: pick a divisor and a quotient, then build the dividend from them. */
+export function makeDivisionQuestions(count, { divisors = [2, 5, 10], maxQuotient = 10 } = {}) {
+  const questions = []
+  const seen = new Set()
+  let guard = 0
+  while (questions.length < count && guard < 500) {
+    guard += 1
+    const b = divisors[Math.floor(Math.random() * divisors.length)]
+    const answer = randInt(2, maxQuotient)
+    const a = b * answer
+    const key = `${a}/${b}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    questions.push({ a, b, answer })
+  }
+  return questions
+}
+
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
