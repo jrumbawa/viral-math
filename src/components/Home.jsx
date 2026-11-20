@@ -45,7 +45,7 @@ const lessons = [
   },
 ]
 
-export default function Home({ onStartLesson }) {
+export default function Home({ onStartLesson, onOpenShop, onOpenCollection }) {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
       <section className="pt-10 pb-8 text-center sm:pt-14">
@@ -91,6 +91,30 @@ export default function Home({ onStartLesson }) {
             )}
           </article>
         ))}
+      </section>
+
+      <section className="mt-8 rounded-[2rem] border-4 border-amber-300 bg-white p-6 text-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] sm:p-8" aria-label="Shop">
+        <p className="text-6xl" aria-hidden="true">🎁</p>
+        <h2 className="mt-2 font-display text-3xl font-extrabold text-slate-900">Squishy Shop</h2>
+        <p className="mx-auto mt-1 max-w-md text-lg font-bold text-slate-600">
+          Spend your ★ points on mystery boxes and squishy toys, then show them off in your collection!
+        </p>
+        <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={onOpenShop}
+            className="min-h-16 rounded-full bg-amber-500 px-8 font-display text-2xl font-extrabold text-white shadow-[0_6px_0_#b45309] transition hover:bg-amber-400 active:translate-y-1 active:shadow-none focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-300"
+          >
+            Visit the shop →
+          </button>
+          <button
+            type="button"
+            onClick={onOpenCollection}
+            className="min-h-16 rounded-full bg-teal-500 px-8 font-display text-2xl font-extrabold text-white shadow-[0_6px_0_#0f766e] transition hover:bg-teal-400 active:translate-y-1 active:shadow-none focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300"
+          >
+            My collection
+          </button>
+        </div>
       </section>
 
       <p className="mt-10 text-center text-lg font-bold text-slate-500">
