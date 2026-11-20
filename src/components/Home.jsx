@@ -21,9 +21,20 @@ const lessons = [
     button: 'bg-teal-500 shadow-[0_6px_0_#0f766e] hover:bg-teal-400 focus-visible:ring-teal-300',
     available: true,
   },
+  {
+    id: 'multiplication',
+    symbol: '×',
+    title: 'Multiplication',
+    tagline: 'Count equal groups the fast way!',
+    example: '3 × 4 = 12',
+    colors: 'bg-rose-400 shadow-[0_6px_0_#be123c]',
+    badge: 'bg-rose-100 text-rose-800',
+    button: 'bg-rose-500 shadow-[0_6px_0_#be123c] hover:bg-rose-400 focus-visible:ring-rose-300',
+    available: true,
+  },
 ]
 
-export default function Home({ onStartAddition, onStartSubtraction }) {
+export default function Home({ onStartLesson }) {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 pb-16 sm:px-6">
       <section className="pt-10 pb-8 text-center sm:pt-14">
@@ -53,7 +64,7 @@ export default function Home({ onStartAddition, onStartSubtraction }) {
             {lesson.available ? (
               <button
                 type="button"
-                onClick={lesson.id === 'addition' ? onStartAddition : onStartSubtraction}
+                onClick={() => onStartLesson(lesson.id)}
                 className={`mt-6 min-h-16 w-full rounded-full font-display text-2xl font-extrabold text-white transition active:translate-y-1 active:shadow-none focus:outline-none focus-visible:ring-4 ${lesson.button}`}
               >
                 Start learning →
