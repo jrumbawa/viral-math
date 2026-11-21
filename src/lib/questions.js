@@ -117,6 +117,91 @@ export function makeFractionQuestions(count) {
   return shuffle(questions)
 }
 
+/** Format a decimal answer without trailing zeroes (0.50 -> "0.5", 0.25 -> "0.25"). */
+function formatDecimal(n) {
+  return String(Math.round(n * 100) / 100)
+}
+
+/**
+ * Generate `count` decimal questions as a mix of the kinds taught in the lesson:
+ * write (tenths/hundredths and place value as a decimal), compare (type the
+ * bigger decimal), add, and subtract. Every answer is a decimal number;
+ * equivalent forms (0.5 for 0.50) count as correct within a small tolerance.
+ */
+export function makeDecimalQuestions(count) {
+  const write = shuffle([
+    { prompt: 'Write 3/10 as a decimal', answer: 0.3, shaded: 3, total: 10 },
+    { prompt: 'Write 7/10 as a decimal', answer: 0.7, shaded: 7, total: 10 },
+    { prompt: 'Write 9/10 as a decimal', answer: 0.9, shaded: 9, total: 10 },
+    { prompt: 'Write 25/100 as a decimal', answer: 0.25, shaded: 25, total: 100 },
+    { prompt: 'Write 68/100 as a decimal', answer: 0.68, shaded: 68, total: 100 },
+    { prompt: 'Write 4 tenths and 5 hundredths as a decimal', answer: 0.45 },
+    { prompt: 'Write 8 tenths and 3 hundredths as a decimal', answer: 0.83 },
+    { prompt: 'Write 3 ones, 2 tenths and 6 hundredths as a decimal', answer: 3.26 },
+    { prompt: 'Write 1 one and 7 tenths as a decimal', answer: 1.7 },
+    { prompt: 'Write 6 hundredths as a decimal', answer: 0.06 },
+  ]).map((q) => ({ kind: 'write', ...q, answerText: formatDecimal(q.answer) }))
+
+  const compare = shuffle([
+    [0.8, 0.65], [0.45, 0.5], [0.3, 0.28], [1.2, 1.15], [0.09, 0.1], [2.4, 2.39], [0.7, 0.07], [3.05, 3.5],
+  ]).map(([x, y]) => {
+    const answer = Math.max(x, y)
+    return {
+      kind: 'compare',
+      prompt: `Which is bigger: ${formatDecimal(x)} or ${formatDecimal(y)}? Type the bigger number`,
+      x,
+      y,
+      answer,
+      answerText: formatDecimal(answer),
+    }
+  })
+
+  const add = shuffle([
+    [1.2, 2.3], [0.4, 0.5], [2.5, 1.3], [0.25, 0.5], [3.6, 1.2], [0.7, 0.15], [1.45, 0.3], [4.2, 2.6],
+  ]).map(([a, b]) => {
+    const answer = Math.round((a + b) * 100) / 100
+    return {
+      kind: 'add',
+      prompt: `${formatDecimal(a)} + ${formatDecimal(b)} = ?`,
+      a,
+      b,
+      answer,
+      answerText: formatDecimal(answer),
+    }
+  })
+
+  const subtract = shuffle([
+    [3.8, 1.5], [0.9, 0.4], [5.6, 2.3], [1.75, 0.5], [4.9, 1.7], [2.35, 1.1], [6.4, 3.2], [0.85, 0.35],
+  ]).map(([a, b]) => {
+    const answer = Math.round((a - b) * 100) / 100
+    return {
+      kind: 'subtract',
+      prompt: `${formatDecimal(a)} − ${formatDecimal(b)} = ?`,
+      a,
+      b,
+      answer,
+      answerText: formatDecimal(answer),
+    }
+  })
+
+  const pools = [write, compare, add, subtract]
+  const questions = []
+  let round = 0
+  while (questions.length < count) {
+    let added = false
+    for (const pool of pools) {
+      if (questions.length >= count) break
+      if (round < pool.length) {
+        questions.push(pool[round])
+        added = true
+      }
+    }
+    if (!added) break
+    round += 1
+  }
+  return shuffle(questions)
+}
+
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }

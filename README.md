@@ -14,7 +14,7 @@ Then open http://localhost:5173 in your browser.
 ## What's built so far
 
 - Home page with a points bank in the header (starts at 0 on your first visit)
-- Lesson cards for Addition, Subtraction, Multiplication, Division, and Fractions, all playable
+- Lesson cards for Addition, Subtraction, Multiplication, Division, Fractions, and Decimals, all playable
 - Each lesson: worked examples, one-at-a-time practice with instant
   feedback, and a 10-question quiz that scores you and adds points
   (10 points per correct answer) to the bank
@@ -25,6 +25,8 @@ Then open http://localhost:5173 in your browser.
   and simple division with no remainders
 - Fractions teaching covers halves, thirds, and quarters, equivalent
   fractions, and adding fractions with the same denominator
+- Decimals teaching covers tenths and hundredths, place value, comparing
+  decimals, and adding and subtracting decimals
 - A Squishy Shop linked from the home page: a 50-point mystery box revealing
   a random collectible squishy (common/rare/epic), or buy a chosen squishy
   directly for 100 points. The balance never goes below 0, and you get a

@@ -54,6 +54,17 @@ const lessons = [
     button: 'bg-lime-500 shadow-[0_6px_0_#3f6212] hover:bg-lime-400 focus-visible:ring-lime-300',
     available: true,
   },
+  {
+    id: 'decimals',
+    symbol: '0.1',
+    title: 'Decimals',
+    tagline: 'Show parts smaller than one whole!',
+    example: '1.4 + 2.3 = 3.7',
+    colors: 'bg-amber-400 shadow-[0_6px_0_#b45309]',
+    badge: 'bg-amber-100 text-amber-800',
+    button: 'bg-amber-500 shadow-[0_6px_0_#b45309] hover:bg-amber-400 focus-visible:ring-amber-300',
+    available: true,
+  },
 ]
 
 export default function Home({ onStartLesson, onOpenShop, onOpenCollection }) {
