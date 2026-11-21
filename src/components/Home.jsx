@@ -43,6 +43,17 @@ const lessons = [
     button: 'bg-sky-500 shadow-[0_6px_0_#0369a1] hover:bg-sky-400 focus-visible:ring-sky-300',
     available: true,
   },
+  {
+    id: 'fractions',
+    symbol: '½',
+    title: 'Fractions',
+    tagline: 'Split a whole into equal parts!',
+    example: '1/4 + 2/4 = 3/4',
+    colors: 'bg-lime-400 shadow-[0_6px_0_#3f6212]',
+    badge: 'bg-lime-100 text-lime-800',
+    button: 'bg-lime-500 shadow-[0_6px_0_#3f6212] hover:bg-lime-400 focus-visible:ring-lime-300',
+    available: true,
+  },
 ]
 
 export default function Home({ onStartLesson, onOpenShop, onOpenCollection }) {

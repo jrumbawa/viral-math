@@ -5,12 +5,13 @@ import AdditionLesson from './components/AdditionLesson'
 import SubtractionLesson from './components/SubtractionLesson'
 import MultiplicationLesson from './components/MultiplicationLesson'
 import DivisionLesson from './components/DivisionLesson'
+import FractionsLesson from './components/FractionsLesson'
 import Shop from './components/Shop'
 import Collection from './components/Collection'
 import { getSaveStatus, loadPersisted, savePersisted, subscribeSaveStatus } from './lib/storage'
 
 export default function App() {
-  const [view, setView] = useState('home') // home | addition | subtraction | multiplication | division | shop | collection
+  const [view, setView] = useState('home') // home | addition | subtraction | multiplication | division | fractions | shop | collection
   const [initial] = useState(() => loadPersisted(window.localStorage))
   const [points, setPoints] = useState(initial.points)
   const [collection, setCollection] = useState(initial.collection)
@@ -44,6 +45,7 @@ export default function App() {
       {view === 'subtraction' && <SubtractionLesson onHome={goHome} onAddPoints={addPoints} />}
       {view === 'multiplication' && <MultiplicationLesson onHome={goHome} onAddPoints={addPoints} />}
       {view === 'division' && <DivisionLesson onHome={goHome} onAddPoints={addPoints} />}
+      {view === 'fractions' && <FractionsLesson onHome={goHome} onAddPoints={addPoints} />}
       {view === 'shop' && (
         <Shop
           points={points}
